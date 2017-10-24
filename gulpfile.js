@@ -29,7 +29,7 @@ gulp.task('html',function(){
         removeComments: true,
         removeStyleLinkTypeAttributes: true
     };
-    gulp.src('src/*.html')
+    gulp.src('src/libs/*.html')
     .pipe(gulpHtml(option))
     .pipe(gulp.dest('dist'))
     // *****
@@ -52,7 +52,7 @@ gulp.task('js',function(){
 });
 // 第三个任务css
 gulp.task('style',function(){
-    gulp.src('src/css/**/*.scss')
+    gulp.src('src/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     // .pipe(cssnano())
     .pipe(gulp.dest('dist/css'))
@@ -62,12 +62,12 @@ gulp.task('style',function(){
     }))
 });
 
-// // 第四个任务,图片压缩
-// gulp.task('imgs',function(){
-//     gulp.src('src/images/*.jpg')
-//     .pipe(imgmin())
-//     .pipe(gulp.dest('dist/images'))
-// });
+// 第四个任务,图片压缩
+gulp.task('imgs',function(){
+    gulp.src('src/images/*.jpg')
+    .pipe(imgmin())
+    .pipe(gulp.dest('dist/images'))
+});
 
 
 // 第五个任务,浏览器自动刷新
@@ -83,9 +83,9 @@ gulp.task('servers',function(){
     }
     browserSync(obj,info);
 
-    gulp.watch('src/*.html',['html']);
+    gulp.watch('src/libs/*.html',['html']);
     gulp.watch('src/js/**/*.js',['js']);
-    gulp.watch('src/css/*.scss',['style']);
+    gulp.watch('src/scss/*.scss',['style']);
 });
 
 // 使用一条命令执行所有任务
