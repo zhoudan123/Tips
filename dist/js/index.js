@@ -1,0 +1,1 @@
+$(function(){var i=-1;$("#i1").click(function(){i++,console.log(i),$(".img1").eq(i).addClass("img2").siblings().removeClass("img2")})});
